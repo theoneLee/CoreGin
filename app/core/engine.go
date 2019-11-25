@@ -1,4 +1,4 @@
-package app
+package core
 
 import (
 	"fmt"
@@ -13,6 +13,12 @@ type Engine struct {
 	pool     sync.Pool
 }
 
+/*
+实现了Handler接口的对象可以注册到HTTP服务端，为特定的路径及其子树提供服务。
+
+ServeHTTP应该将回复的头域和数据写入ResponseWriter接口然后返回。返回标志着该请求已经结束，
+HTTP服务端可以转移向该连接上的下一个请求。
+*/
 func (engine *Engine) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	//panic("implement me")
 	c := engine.pool.Get().(*Context)

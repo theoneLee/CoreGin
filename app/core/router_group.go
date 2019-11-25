@@ -1,4 +1,4 @@
-package app
+package core
 
 import "path"
 
@@ -87,7 +87,6 @@ func joinPaths(absolutePath, relativePath string) string {
 	return finalPath
 }
 
-//工具方法 获取字符串最后一个字符
 func lastChar(str string) uint8 {
 	if str == "" {
 		panic("The length of the string can't be 0")
