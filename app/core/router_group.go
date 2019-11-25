@@ -41,16 +41,21 @@ func (routerGroup *RouterGroup) GET(path string, handlers ...HandlerFun) IRouter
 	return routerGroup
 }
 
-func (routerGroup *RouterGroup) POST(string, ...HandlerFun) IRouter {
-	panic("implement me")
+func (routerGroup *RouterGroup) POST(path string, handlers ...HandlerFun) IRouter {
+	//panic("implement me")
+	routerGroup.handler("POST", path, handlers)
+	return routerGroup
 }
 
-func (routerGroup *RouterGroup) PUT(string, ...HandlerFun) IRouter {
-	panic("implement me")
+func (routerGroup *RouterGroup) PUT(path string, handlers ...HandlerFun) IRouter {
+	//panic("implement me")
+	routerGroup.handler("PUT", path, handlers)
+	return routerGroup
 }
 
-func (routerGroup *RouterGroup) DELETE(string, ...HandlerFun) IRouter {
-	panic("implement me")
+func (routerGroup *RouterGroup) DELETE(path string, handlers ...HandlerFun) IRouter {
+	routerGroup.handler("DELETE", path, handlers)
+	return routerGroup
 }
 
 func (routerGroup *RouterGroup) handler(httpMethod string, relativePath string, handlers []HandlerFun) IRouter {
