@@ -16,15 +16,15 @@ func main() {
 		if v, ok := pm["id"]; ok {
 			fmt.Println("request url", ctx.Request.URL.String(), " parameter id value =", v)
 		}
-		ctx.ResponseWriter.WriteHeader(200)
-		ctx.ResponseWriter.Write([]byte("hello core gin."))
-		//todo json render
-		//r := render.JSON{Data:"success"}
-		//r.WriteContentType(ctx.ResponseWriter)
-		//
-		//if err := r.Render(ctx.ResponseWriter); err != nil{
-		//	panic(err)
-		//}
+		//ctx.ResponseWriter.WriteHeader(200)
+		//ctx.ResponseWriter.Write([]byte("hello core gin."))
+		//json render
+		r := core.JSON{Data: "hello core gin."}
+		r.WriteContentType(ctx.ResponseWriter)
+
+		if err := r.Render(ctx.ResponseWriter); err != nil {
+			panic(err)
+		}
 	})
 
 	v1 := router.Group("/v1")
